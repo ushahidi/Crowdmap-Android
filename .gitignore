@@ -1,0 +1,22 @@
+*.class
+.idea
+bin/
+out/
+gen/
+*.swp
+.settings
+.DS_Store
+.classpath
+*.iml
+*.ipr
+*.iws
+.gradle
+gradle-app.setting
+
+build
+# Package Files #
+*.jar
+*.war
+*.ear
+gradle.properties
+local.properties
