@@ -1,1 +1,2 @@
-include ':sdk', ':sdk-sample'
+include ':authenticator-sample'
+include ':gallery-sample'
