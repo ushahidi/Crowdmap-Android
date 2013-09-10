@@ -1,7 +1,14 @@
-apply plugin: 'android'
+apply plugin: 'android-library'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+}
+
+dependencies {
+    compile 'com.crowdmap:java-sdk:1.0.0-SNAPSHOT'
 }
 
 android {
@@ -10,7 +17,7 @@ android {
 
     defaultConfig {
         minSdkVersion 7
-        targetSdkVersion 16
+        targetSdkVersion 18
     }
 }
 

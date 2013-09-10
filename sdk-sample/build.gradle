@@ -10,9 +10,10 @@ android {
 
     defaultConfig {
         minSdkVersion 7
-        targetSdkVersion 16
+        targetSdkVersion 18
     }
 }
 
 dependencies {
+    compile project(':sdk-sample')
 }
