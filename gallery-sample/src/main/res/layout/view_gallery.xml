@@ -41,10 +41,11 @@
             <TextView android:textAppearance="@style/TextAppearanceMedium"
                       android:textColor="@android:color/white" android:ellipsize="end"
                       android:layout_gravity="bottom" android:id="@+id/description"
+
                       android:background="@drawable/dim_background_transparent"
                       android:paddingLeft="4dp" android:paddingTop="4dp"
                       android:paddingRight="4dp" android:paddingBottom="20dp"
-                      android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+                      android:layout_width="match_parent" android:layout_height="wrap_content"/>
 
         </FrameLayout>
     </LinearLayout>

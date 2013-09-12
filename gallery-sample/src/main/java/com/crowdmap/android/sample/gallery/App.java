@@ -17,12 +17,12 @@ public class App extends Application {
 
     @Override
     public void onCreate() {
-        config  = new ApiConfig();
+        config = new ApiConfig();
         config.setupKeys(PUBLIC_KEY, PRIVATE_KEY);
     }
 
     public static CrowdmapApiManager getInstance() {
-        if(mCrowdmapApiManager == null) {
+        if (mCrowdmapApiManager == null) {
             mCrowdmapApiManager = new CrowdmapApiManager(config);
         }
         return mCrowdmapApiManager;

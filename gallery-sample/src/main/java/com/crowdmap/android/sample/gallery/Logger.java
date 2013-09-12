@@ -4,6 +4,7 @@ package com.crowdmap.android.sample.gallery;
  * A Wrapper for Android log class making sure logs are shown only when the build config is in a
  * release mode.
  */
+
 import android.util.Log;
 
 public class Logger {

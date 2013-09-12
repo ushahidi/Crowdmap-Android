@@ -8,6 +8,7 @@ import android.widget.ImageView;
  * Show a square Image
  */
 final class SampleImageView extends ImageView {
+
     public SampleImageView(Context context) {
         super(context);
     }
@@ -16,7 +17,8 @@ final class SampleImageView extends ImageView {
         super(context, attrs);
     }
 
-    @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(getMeasuredWidth(), getMeasuredWidth());
     }

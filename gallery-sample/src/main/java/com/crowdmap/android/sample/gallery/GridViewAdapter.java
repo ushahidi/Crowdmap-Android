@@ -4,12 +4,10 @@ import com.crowdmap.java.sdk.model.Media;
 import com.squareup.picasso.Picasso;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +28,7 @@ public class GridViewAdapter extends BaseAdapter {
     public void loadMedia(List<Media> mediaUrls) {
         this.mediaUrls = mediaUrls;
     }
+
     @Override
     public int getCount() {
         return mediaUrls.size();
@@ -49,12 +48,12 @@ public class GridViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         SampleImageView image;
-        if(convertView == null) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.gridview_item, null);
             image = (SampleImageView) convertView.findViewById(R.id.img);
             convertView.setTag(image);
         } else {
-            image  = (SampleImageView) convertView.getTag();
+            image = (SampleImageView) convertView.getTag();
         }
 
         final String url = getItem(position).getFileLocation() + getItem(position).getFilename();
@@ -66,7 +65,7 @@ public class GridViewAdapter extends BaseAdapter {
                 .load(url)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
-                .resize(width,height)
+                .resize(width, height)
                 .centerCrop()
                 .into(image);
         return convertView;

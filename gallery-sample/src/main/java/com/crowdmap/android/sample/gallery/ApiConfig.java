@@ -5,7 +5,7 @@ import com.crowdmap.java.sdk.net.HttpClient;
 /**
  *
  */
-public class ApiConfig implements IApiConfig{
+public class ApiConfig implements IApiConfig {
 
     private String mPubKey;
 
