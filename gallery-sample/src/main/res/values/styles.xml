@@ -5,18 +5,6 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
 
     <style name="LoginFormContainer">
         <item name="android:layout_width">match_parent</item>
@@ -24,4 +12,37 @@
         <item name="android:padding">16dp</item>
     </style>
 
+    <style name="Widget.MediaGallerySample.Overlay" parent="android:Widget">
+        <item name="android:background">#90000000</item>
+    </style>
+
+    <style name="Widget.MediaGallerySample.ActionBarTitle" parent="android:Widget.TextView">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <!-- Use 'dp' so that the user's font preference doesn't affect the action bar. -->
+        <item name="android:textSize">19dp</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="Widget.MediaGallerySample.ActionBarButton" parent="android:Widget.Button">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textColor">#ffffffff</item>
+        <!-- Use 'dp' so that the user's font preference doesn't affect the action bar. -->
+        <item name="android:textSize">13dp</item>
+        <item name="android:background">@drawable/overlay_selector</item>
+    </style>
+
+    <style name="Widget.MediaGallerySample.DescriptionUrl" parent="android:Widget.TextView">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Widget.MediaGallerySample.DescriptionText" parent="android:Widget.TextView">
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>
