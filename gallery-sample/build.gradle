@@ -10,6 +10,7 @@ repositories {
 dependencies {
     compile 'com.android.support:appcompat-v7:18.0.0'
     compile 'com.crowdmap:java-sdk:1.0.0-SNAPSHOT'
+    compile 'com.squareup.picasso:picasso:2.0.0'
 }
 
 android {
