@@ -1,10 +1,12 @@
 <resources>
-    
+
     <!-- Strings related to login -->
     <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
 
-    <string name="action_sign_in_register"><b>Sign in</b></string>
+    <string name="action_sign_in_register">
+        <b>Sign in</b>
+    </string>
     <string name="action_sign_in_short">Sign in</string>
 
     <string name="action_forgot_password">Recover lost password</string>

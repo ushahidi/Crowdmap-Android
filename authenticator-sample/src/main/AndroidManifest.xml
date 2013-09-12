@@ -1,55 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.crowdmap.android.sample.authenticator"
-    android:versionCode="1"
-    android:versionName="1.0">
-    <uses-permission
-            android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission
-            android:name="android.permission.MANAGE_ACCOUNTS" />
-    <uses-permission
-            android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.INTERNET" />
+          package="com.crowdmap.android.sample.authenticator"
+          android:versionCode="1"
+          android:versionName="1.0">
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
-    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="16" />
+    <uses-sdk
+            android:minSdkVersion="7"
+            android:targetSdkVersion="16"/>
 
-    <uses-permission
-            android:name="android.permission.READ_SYNC_STATS" />
-    <uses-permission
-            android:name="android.permission.READ_SYNC_SETTINGS" />
-    <uses-permission
-            android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
 
-    <application android:allowBackup="true"
-        android:label="@string/app_name"
-        android:icon="@drawable/ic_launcher"
-        android:name="App"
-        android:theme="@style/AppTheme">
-
+    <application
+            android:name="com.crowdmap.android.sample.authenticator.App"
+            android:allowBackup="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
         <activity
                 android:name="com.crowdmap.android.sample.authenticator.AuthenticatorActivity"
                 android:label="@string/app_name"
-                android:windowSoftInputMode="adjustResize|stateVisible" >
+                android:windowSoftInputMode="adjustResize|stateVisible">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
         <service
-                android:name=".AuthenticationService"
+                android:name="com.crowdmap.android.sample.authenticator.AuthenticationService"
                 android:exported="true">
             <intent-filter>
-                <action
-                        android:name="android.accounts.AccountAuthenticator" />
+                <action android:name="android.accounts.AccountAuthenticator"/>
             </intent-filter>
+
             <meta-data
                     android:name="android.accounts.AccountAuthenticator"
-                    android:resource="@xml/authenticator" />
+                    android:resource="@xml/authenticator"/>
         </service>
 
+        <activity
+                android:name="com.crowdmap.android.sample.authenticator.MainActivity"
+                android:label="@string/title_activity_main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

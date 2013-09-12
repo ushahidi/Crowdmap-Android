@@ -1,23 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Crowdmap Android Sdk</string>
-    <string name="login_activity_loginfail_text_both">The username or password isn\'t valid. A Sample SyncAdapter account is required. Please try again. </string>
+    <string name="login_activity_loginfail_text_both">The username or password isn\'t valid. A
+        Sample SyncAdapter account is required. Please try again.
+    </string>
     <!-- Message shown in dialog if the password is invalid -->
-    <string name="login_activity_loginfail_text_pwonly">You entered the wrong password or your account has changed. Please re-enter your password.</string>
+    <string name="login_activity_loginfail_text_pwonly">You entered the wrong password or your
+        account has changed. Please re-enter your password.
+    </string>
     <!-- Message shown in dialog to prompt the user for their password -->
-    <string
-            name="login_activity_loginfail_text_pwmissing">Type the password for this account.</string>
+    <string name="login_activity_loginfail_text_pwmissing">Type the password for this account.
+    </string>
 
     <!-- Label above username EditText -->
-    <string
-            name="login_activity_username_label">Username</string>
+    <string name="login_activity_username_label">Username</string>
     <!-- Label above password EditText -->
-    <string
-            name="login_activity_password_label">Password</string>
+    <string name="login_activity_password_label">Password</string>
     <!-- Button to sign in after entering username and password -->
-    <string
-            name="login_activity_ok_button">Sign in</string>
-
+    <string name="login_activity_ok_button">Sign in</string>
     <string name="authenticating">Authenticating\u2026</string>
+    <string name="login_text">Sign in to your account.</string>
+    <string name="signin_prompt">Sign in to your account to view your profie</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
 
-    <string name="login_text">Sign in to your account. </string>
 </resources>

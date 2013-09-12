@@ -12,9 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.ContactsContract;
-import android.provider.SyncStateContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -22,49 +20,47 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import static com.crowdmap.android.sample.authenticator.AuthConstants.PARAM_CONFIRM_CREDENTIALS;
-import static com.crowdmap.android.sample.authenticator.AuthConstants.PARAM_USERNAME;
-
 
 /**
- * Activity to display login to the user.
- * Highly based on the SyncAdapter sample code.
+ * Activity to display login to the user. Highly based on the SyncAdapter sample code.
  *
- * Abstracted this class so users can implement their own authenticator activity.
+ * Modified it a bit to fit this sample activity.
  */
 public class AuthenticatorActivity extends AccountAuthenticatorActivity {
 
-    /** The Intent flag to confirm credentials. */
+    /**
+     * The Intent flag to confirm credentials.
+     */
     public static final String PARAM_CONFIRM_CREDENTIALS = "confirmCredentials";
 
-    /** The Intent extra to store password. */
-    public static final String PARAM_PASSWORD = "password";
 
-    /** The Intent extra to store username. */
+    /**
+     * The Intent extra to store username.
+     */
     public static final String PARAM_USERNAME = "username";
 
-    /** The Intent extra to store username. */
-    public static final String PARAM_AUTHTOKEN_TYPE = "authtokenType";
-
-    /** The tag used to log to adb console. */
+    /**
+     * The tag used to log to adb console.
+     */
     private static final String TAG = "AuthenticatorActivity";
+
     private AccountManager mAccountManager;
 
-    /** Keep track of the login task so can cancel it if requested */
+    /**
+     * Keep track of the login task so can cancel it if requested
+     */
     private UserLoginTask mAuthTask = null;
 
-    /** Keep track of the progress dialog so we can dismiss it */
+    /**
+     * Keep track of the progress dialog so we can dismiss it
+     */
     private ProgressDialog mProgressDialog = null;
 
     /**
-     * If set we are just checking that the user knows their credentials; this
-     * doesn't cause the user's password or authToken to be changed on the
-     * device.
+     * If set we are just checking that the user knows their credentials; this doesn't cause the
+     * user's password or authToken to be changed on the device.
      */
     private Boolean mConfirmCredentials = false;
-
-    /** for posting authentication attempts back to UI thread */
-    private final Handler mHandler = new Handler();
 
     private TextView mMessage;
 
@@ -72,12 +68,14 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
 
     private EditText mPasswordEdit;
 
-    /** Was the original caller asking for an entirely new account? */
-    protected boolean mRequestNewAccount = false;
-
     private String mUsername;
 
     private EditText mUsernameEdit;
+
+    /**
+     * Was the original caller asking for an entirely new account?
+     */
+    protected boolean mRequestNewAccount = false;
 
     /**
      * {@inheritDoc}
@@ -85,15 +83,15 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
     @Override
     public void onCreate(Bundle icicle) {
 
-        Log.i(TAG, "onCreate(" + icicle + ")");
+        Logger.log(TAG, "onCreate(" + icicle + ")");
         super.onCreate(icicle);
         mAccountManager = AccountManager.get(this);
-        Log.i(TAG, "loading data from Intent");
+        Logger.log(TAG, "loading data from Intent");
         final Intent intent = getIntent();
         mUsername = intent.getStringExtra(PARAM_USERNAME);
         mRequestNewAccount = mUsername == null;
         mConfirmCredentials = intent.getBooleanExtra(PARAM_CONFIRM_CREDENTIALS, false);
-        Log.i(TAG, "    request new: " + mRequestNewAccount);
+        Logger.log(TAG, "    request new: " + mRequestNewAccount);
         requestWindowFeature(Window.FEATURE_LEFT_ICON);
         setContentView(R.layout.login_activity);
         getWindow().setFeatureDrawableResource(
@@ -101,8 +99,11 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         mMessage = (TextView) findViewById(R.id.message);
         mUsernameEdit = (EditText) findViewById(R.id.username);
         mPasswordEdit = (EditText) findViewById(R.id.password);
-        if (!TextUtils.isEmpty(mUsername)) mUsernameEdit.setText(mUsername);
+        if (!TextUtils.isEmpty(mUsername)) {
+            mUsernameEdit.setText(mUsername);
+        }
         mMessage.setText(getMessage());
+
     }
 
     /*
@@ -116,7 +117,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         dialog.setCancelable(true);
         dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             public void onCancel(DialogInterface dialog) {
-                Log.i(TAG, "user cancelling authentication");
+                Logger.log(TAG, "user cancelling authentication");
                 if (mAuthTask != null) {
                     mAuthTask.cancel(true);
                 }
@@ -130,9 +131,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
     }
 
     /**
-     * Handles onClick event on the Submit button. Sends username/password to
-     * the server for authentication. The button is configured to call
-     * handleLogin() in the layout XML.
+     * Handles onClick event on the Submit button. Sends username/password to the server for
+     * authentication. The button is configured to call handleLogin() in the layout XML.
      *
      * @param view The Submit button for which this method is invoked
      */
@@ -153,14 +153,14 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
     }
 
     /**
-     * Called when response is received from the server for confirm credentials
-     * request. See onAuthenticationResult(). Sets the
-     * AccountAuthenticatorResult which is sent back to the caller.
+     * Called when response is received from the server for confirm credentials request. See
+     * onAuthenticationResult(). Sets the AccountAuthenticatorResult which is sent back to the
+     * caller.
      *
      * @param result the confirmCredentials result.
      */
     private void finishConfirmCredentials(boolean result) {
-        Log.i(TAG, "finishConfirmCredentials()");
+        Logger.log(TAG, "finishConfirmCredentials()");
         final Account account = new Account(mUsername, AuthConstants.ACCOUNT_TYPE);
         mAccountManager.setPassword(account, mPassword);
         final Intent intent = new Intent();
@@ -171,20 +171,22 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
     }
 
     /**
-     * Called when response is received from the server for authentication
-     * request. See onAuthenticationResult(). Sets the
-     * AccountAuthenticatorResult which is sent back to the caller. We store the
-     * authToken that's returned from the server as the 'password' for this
+     * Called when response is received from the server for authentication request. See
+     * onAuthenticationResult(). Sets the AccountAuthenticatorResult which is sent back to the
+     * caller. We store the authToken that's returned from the server as the 'password' for this
      * account - so we're never storing the user's actual password locally.
      *
-     * @param authToken confirmCredentials result.
+     * @param session session from crowdmap api.
      */
-    private void finishLogin(String authToken) {
+    private void finishLogin(Session session) {
 
-        Log.i(TAG, "finishLogin()");
+        Logger.log(TAG, "finishLogin()");
         final Account account = new Account(mUsername, AuthConstants.ACCOUNT_TYPE);
+        Bundle extraData = new Bundle();
+        extraData.putString(AuthConstants.PARAM_USER_ID, session.getUserId());
+        extraData.putString(AuthConstants.PARAM_AUTHTOKEN_TYPE, session.getSessionToken());
         if (mRequestNewAccount) {
-            mAccountManager.addAccountExplicitly(account, mPassword, null);
+            mAccountManager.addAccountExplicitly(account, mPassword, extraData);
             // Set contacts sync for this account.
             ContentResolver.setSyncAutomatically(account, ContactsContract.AUTHORITY, true);
         } else {
@@ -201,13 +203,13 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
     /**
      * Called when the authentication process completes (see attemptLogin()).
      *
-     * @param authToken the authentication token returned by the server, or NULL if
-     *            authentication failed.
+     * @param session the authentication token returned by the server, or NULL if authentication
+     *                failed.
      */
-    public void onAuthenticationResult(String authToken) {
+    public void onAuthenticationResult(Session session) {
 
-        boolean success = ((authToken != null) && (authToken.length() > 0));
-        Log.i(TAG, "onAuthenticationResult(" + success + ")");
+        boolean success = ((session != null));
+        Logger.log(TAG, "onAuthenticationResult(" + success + ")");
 
         // Our task is complete, so clear it out
         mAuthTask = null;
@@ -217,7 +219,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
 
         if (success) {
             if (!mConfirmCredentials) {
-                finishLogin(authToken);
+                finishLogin(session);
             } else {
                 finishConfirmCredentials(success);
             }
@@ -236,7 +238,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
     }
 
     public void onAuthenticationCancel() {
-        Log.i(TAG, "onAuthenticationCancel()");
+        Logger.log(TAG, "onAuthenticationCancel()");
 
         // Our task is complete, so clear it out
         mAuthTask = null;
@@ -281,18 +283,16 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
     }
 
     /**
-     * Represents an asynchronous task used to authenticate a user against the
-     * SampleSync Service
+     * Represents an asynchronous task used to authenticate a user against the SampleSync Service
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, String> {
+    public class UserLoginTask extends AsyncTask<Void, Void, Session> {
 
         @Override
-        protected String doInBackground(Void... params) {
+        protected Session doInBackground(Void... params) {
             // We do the actual work of authenticating the user
             // in the NetworkUtilities class.
             try {
-                final Session session = App.getInstance().getCrowdmap().login(mUsername, mPassword);
-                return session.getSessionToken();
+                return App.getInstance().getCrowdmap().login(mUsername, mPassword);
             } catch (Exception ex) {
                 Logger.log(TAG, "UserLoginTask.doInBackground: failed to authenticate");
                 Logger.log(TAG, ex.toString());
@@ -301,10 +301,10 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         }
 
         @Override
-        protected void onPostExecute(final String authToken) {
+        protected void onPostExecute(final Session session) {
             // On a successful authentication, call back into the Activity to
             // communicate the authToken (or null for an error).
-            onAuthenticationResult(authToken);
+            onAuthenticationResult(session);
         }
 
         @Override

@@ -19,4 +19,5 @@ android {
 
 dependencies {
     compile 'com.crowdmap:java-sdk:1.0.0-SNAPSHOT'
+    compile 'com.squareup.picasso:picasso:2.0.0'
 }

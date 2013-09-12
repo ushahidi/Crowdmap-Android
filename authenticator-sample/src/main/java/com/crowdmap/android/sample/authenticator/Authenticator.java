@@ -1,4 +1,5 @@
 package com.crowdmap.android.sample.authenticator;
+
 import com.crowdmap.java.sdk.json.Session;
 
 import android.accounts.AbstractAccountAuthenticator;
@@ -19,7 +20,9 @@ import android.text.TextUtils;
  */
 public class Authenticator extends AbstractAccountAuthenticator {
 
-    /** The tag used to log to adb console. **/
+    /**
+     * The tag used to log to adb console. *
+     */
     private static final String TAG = "Authenticator";
 
     // Authentication Service context
@@ -32,6 +35,7 @@ public class Authenticator extends AbstractAccountAuthenticator {
         mContext = context;
         mCrowdmapApi = crowdmapApi;
     }
+
     @Override
     public Bundle addAccount(AccountAuthenticatorResponse response, String accountType,
             String authTokenType, String[] requiredFeatures, Bundle options) {
@@ -77,10 +81,17 @@ public class Authenticator extends AbstractAccountAuthenticator {
             final Session session = mCrowdmapApi.getCrowdmap().login(account.name, password);
             final String authToken = session.getSessionToken();
             if (!TextUtils.isEmpty(authToken)) {
+                // save user ID
+                final Bundle extraData = new Bundle();
+                extraData.putString(AuthConstants.PARAM_USER_ID, session.getUserId());
+                extraData.putString(AuthConstants.PARAM_AUTHTOKEN_TYPE, session.getSessionToken());
+                am.addAccountExplicitly(account, password, extraData);
+
                 final Bundle result = new Bundle();
                 result.putString(AccountManager.KEY_ACCOUNT_NAME, account.name);
                 result.putString(AccountManager.KEY_ACCOUNT_TYPE, AuthConstants.ACCOUNT_TYPE);
                 result.putString(AccountManager.KEY_AUTHTOKEN, authToken);
+                result.putString(AuthConstants.PARAM_USER_ID, session.getUserId());
                 return result;
             }
         }

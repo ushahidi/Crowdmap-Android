@@ -1,12 +1,11 @@
 package com.crowdmap.android.sample.authenticator;
 
-import com.crowdmap.java.sdk.Crowdmap;
 import com.crowdmap.java.sdk.net.HttpClient;
 
 /**
  *
  */
-public class ApiConfig implements IApiConfig{
+public class ApiConfig implements IApiConfig {
 
     private String mPubKey;
 
