@@ -10,15 +10,6 @@
 	have questions regarding the use of this file, please contact Ushahidi developers 
 	at team@ushahidi.com.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <com.crowdmap.android.sample.gallery.SampleImageView android:id="@+id/img"
-                                                         android:layout_width="wrap_content"
-                                                         android:layout_height="wrap_content"
-                                                         android:scaleType="centerCrop"
-            />
-
-</LinearLayout>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/placeholder"/>
+</selector>

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,13 +48,10 @@ public class GridViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        SampleImageView image;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.gridview_item, null);
-            image = (SampleImageView) convertView.findViewById(R.id.img);
-            convertView.setTag(image);
-        } else {
-            image = (SampleImageView) convertView.getTag();
+        SampleImageView image = (SampleImageView) convertView;
+        if (image == null) {
+            image = new SampleImageView(context);
+            image.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
 
         final String url = getItem(position).getFileLocation() + getItem(position).getFilename();
@@ -68,6 +66,7 @@ public class GridViewAdapter extends BaseAdapter {
                 .resize(width, height)
                 .centerCrop()
                 .into(image);
-        return convertView;
+
+        return image;
     }
 }
