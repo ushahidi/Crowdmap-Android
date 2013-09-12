@@ -14,4 +14,6 @@
     <color name="overlay_selector_pressed">#40000000</color>
     <color name="window_background">#ff202020</color>
     <color name="list_divider">#ff555555</color>
+    <color name="actionbar_transparent_bg">#99000000</color>
+    <color name="background_selected">#F99881</color>
 </resources>

@@ -11,9 +11,8 @@
 	at team@ushahidi.com.
 -->
 <resources>
-    <style name="AppBaseTheme" parent="android:Theme.NoTitleBar">
-        <item name="android:windowBackground">@color/window_background</item>
-        <item name="android:textColor">#ffe0e0e0</item>
+    <style name="AppBaseTheme" parent="Transparent">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background</item>
     </style>
 
     <!-- Application theme. -->

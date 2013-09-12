@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="background">#ffffffff</item>
+    <item type="drawable" name="background_inverse">#ff000000</item>
+    <item type="drawable" name="dim_background">#ffc0c0c0</item>
+    <item type="drawable" name="dim_background_inverse">#ff303030</item>
+    <item type="drawable" name="dim_background_transparent">#80000000</item>
+    <item type="drawable" name="dim_background_transparent_focused">#802e2e2e</item>
+    <item type="drawable" name="dim_background_transparent_pressed">#80616161</item>
+</resources>

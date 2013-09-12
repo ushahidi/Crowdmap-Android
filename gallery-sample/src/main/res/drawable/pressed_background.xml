@@ -10,6 +10,6 @@
 	have questions regarding the use of this file, please contact Ushahidi developers 
 	at team@ushahidi.com.
 -->
-<resources>
-    <integer name="column_count">3</integer>
-</resources>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/background_selected"/>
+</shape>
