@@ -18,8 +18,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.crowdmap.android.sample.gallery.MediaGallerySampleActivity"
-            android:label="@string/app_name"
-                android:windowSoftInputMode="stateVisible">
+            android:configChanges="screenLayout|orientation|keyboardHidden|touchscreen|navigation"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +29,10 @@
         </activity>
         <activity
             android:name="com.crowdmap.android.sample.gallery.ViewMediaGallerySampleActivity"
+            android:configChanges="screenLayout|orientation|keyboardHidden|touchscreen|navigation"
             android:label="@string/title_activity_main" >
         </activity>
+
     </application>
 
 </manifest>

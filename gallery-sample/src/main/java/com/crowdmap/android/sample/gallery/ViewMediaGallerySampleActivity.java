@@ -8,13 +8,14 @@ import com.squareup.picasso.Picasso;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.util.List;
 
 import static com.crowdmap.android.sample.gallery.MediaGallerySampleActivity.MEDIA_ID;
 
@@ -82,10 +83,16 @@ public class ViewMediaGallerySampleActivity extends Activity {
                 mMedia = App.getInstance().getCrowdmap().mediaService().getMedia(mMediaId);
 
                 // fetch the user details
-                final long userId = mMedia.getMedia().get(0).getUserId();
+                if((mMedia.getMedia() != null) && (mMedia.getMedia().size() > 0)) {
+                    final long userId = mMedia.getMedia().get(0).getUserId();
+                    final List<User> users = App.getInstance().getCrowdmap().userService()
+                        .getUser(userId).getUsers();
 
-                mUsers = App.getInstance().getCrowdmap().userService().getUser(userId).getUsers()
-                        .get(0);
+                    if ((users != null) && (users.size() > 0)) {
+                        mUsers = users.get(0);
+                    }
+                }
+
             } catch (CrowdmapException e) {
                 e.printStackTrace();
             }
@@ -101,7 +108,8 @@ public class ViewMediaGallerySampleActivity extends Activity {
                         mMedia.getMedia().get(0).getFileLocation() + mMedia.getMedia().get(0)
                                 .getFilename()).placeholder(R.drawable.placeholder)
                         .error(R.drawable.error).fit().into(mImageView);
-                mDescription.setText("By @" + mUsers.getUsername());
+                if(mUsers.getUsername() != null)
+                    mDescription.setText("By @" + mUsers.getUsername());
             }
         }
 

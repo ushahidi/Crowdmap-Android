@@ -4,7 +4,6 @@ import com.crowdmap.java.sdk.model.Media;
 import com.squareup.picasso.Picasso;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;

@@ -109,6 +109,7 @@ public class MediaGallerySampleActivity extends Activity implements AdapterView.
             super.onPostExecute(aVoid);
             if (mMedia != null) {
                 mGridViewAdapter.loadMedia(mMedia.getMedia());
+                mGridView.setAdapter(mGridViewAdapter);
             }
         }
 
