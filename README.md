@@ -7,6 +7,8 @@ from the [website][1].
 
 ![](https://raw.github.com/ushahidi/Crowdmap-Android/master/screenshots/nexu4_landscape_framed.png)
 
+![](https://raw.github.com/ushahidi/Crowdmap-Android/master/screenshots/nexus_portrait_framed.png)
+
 
 #### Profile
 ![](https://raw.github.com/ushahidi/Crowdmap-Android/master/screenshots/profile_framed.png)
