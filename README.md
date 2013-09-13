@@ -9,7 +9,7 @@ from the [website][1].
 
 
 #### Profile
-![](https://raw.github.com/ushahidi/Crowdmap-Android/master/screenshots/nexu4_landscape_framed.png)
+![](https://raw.github.com/ushahidi/Crowdmap-Android/master/screenshots/profile_framed.png)
 
 ### License
 This project is released under the `GNU AFFERO GENERAL PUBLIC LICENSE Version 3`
