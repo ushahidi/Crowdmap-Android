@@ -1,7 +1,5 @@
 package com.crowdmap.android.sample.authenticator;
 
-import com.crowdmap.java.sdk.net.CrowdmapHttpClient;
-
 import android.app.Application;
 
 /**
@@ -21,7 +19,6 @@ public class App extends Application {
     public void onCreate() {
         config = new ApiConfig();
         config.setupKeys(PUBLIC_KEY, PRIVATE_KEY);
-        //config.setHttpClient(new CrowdmapHttpClient("api.crdmp3.com/v1", "http"));
     }
 
     public static CrowdmapApiManager getInstance() {

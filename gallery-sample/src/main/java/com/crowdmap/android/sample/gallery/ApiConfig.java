@@ -1,6 +1,5 @@
 package com.crowdmap.android.sample.gallery;
 
-import com.crowdmap.java.sdk.net.HttpClient;
 
 /**
  *
@@ -10,8 +9,6 @@ public class ApiConfig implements IApiConfig {
     private String mPubKey;
 
     private String mPrivKey;
-
-    private HttpClient mHttpClient;
 
 
     @Override
@@ -29,11 +26,4 @@ public class ApiConfig implements IApiConfig {
         return mPrivKey;
     }
 
-    public HttpClient getHttpClient() {
-        return mHttpClient;
-    }
-
-    public void setHttpClient(HttpClient httpClient) {
-        mHttpClient = httpClient;
-    }
 }

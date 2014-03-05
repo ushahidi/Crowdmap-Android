@@ -292,7 +292,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
             // We do the actual work of authenticating the user
             // in the NetworkUtilities class.
             try {
-                return App.getInstance().getCrowdmap().login(mUsername, mPassword);
+                return App.getInstance().getCrowdmap().sessionService().login(mUsername, mPassword);
             } catch (Exception ex) {
                 Logger.log(TAG, "UserLoginTask.doInBackground: failed to authenticate");
                 Logger.log(TAG, ex.toString());

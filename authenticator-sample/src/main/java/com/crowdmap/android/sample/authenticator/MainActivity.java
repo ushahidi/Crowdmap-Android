@@ -143,9 +143,7 @@ public class MainActivity extends Activity {
                 {
                     getUserId();
                     App.getInstance().getCrowdmap().utilityService().about();
-                    mUsers = App.getInstance().getCrowdmap().userService()
-
-                            .setSessionToken(mSessionToken).getUser(Long.valueOf(mUserId));
+                    mUsers = App.getInstance().getCrowdmap().userService().getUser(Long.valueOf(mUserId));
                 }
 
             }

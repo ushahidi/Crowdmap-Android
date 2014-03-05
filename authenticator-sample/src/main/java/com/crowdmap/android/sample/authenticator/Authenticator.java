@@ -78,7 +78,7 @@ public class Authenticator extends AbstractAccountAuthenticator {
         final AccountManager am = AccountManager.get(mContext);
         final String password = am.getPassword(account);
         if (password != null) {
-            final Session session = mCrowdmapApi.getCrowdmap().login(account.name, password);
+            final Session session = mCrowdmapApi.getCrowdmap().sessionService().login(account.name, password);
             final String authToken = session.getSessionToken();
             if (!TextUtils.isEmpty(authToken)) {
                 // save user ID
